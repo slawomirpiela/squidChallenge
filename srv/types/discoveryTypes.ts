@@ -1,11 +1,31 @@
-export interface Location {
-  lat: number;
-  long: number;
+export interface UserLocation {
+  Lat: number;
+  Long: number;
 }
+
+interface BasicFields {
+  Category: string;
+  "Chain Name": string;
+}
+
+interface Location {
+  Address: string;
+  Lat: number;
+  Long: number;
+  Name?: string;
+  ShortAddress: string;
+}
+
 export interface Business {
-  id: string;
+  "Basic Fields": BasicFields;
+  Locations: { [key: string]: Location };
+}
+export interface BusinessData {
+  [key: string]: Business;
+}
+
+export interface SortedBusiness {
   name: string;
-  locations: {
-    [key: string]: Location;
-  };
+  locationId: string;
+  distance: number;
 }
