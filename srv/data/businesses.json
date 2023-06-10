@@ -51,7 +51,7 @@
       "225001-001": {
         "Address": "17 Dame Street, Dublin 2",
         "Lat": 53.344567,
-        "Long": -6.267890,
+        "Long": -6.26789,
         "Name": "Bean Haven",
         "Short Address": "17 Dame St, D2"
       }
@@ -73,7 +73,7 @@
       "31401-002": {
         "Address": "12 Grafton Street, Dublin 2",
         "Lat": 53.342345,
-        "Long": -6.263210,
+        "Long": -6.26321,
         "Name": "Italiano's",
         "Short Address": "12 Grafton St, D2"
       }
@@ -90,13 +90,6 @@
         "Lat": 53.348765,
         "Long": -6.260987,
         "Name": "Brew Haven"
-      },
-      "4021201-002": {
-        "Address": "49 O'Connell Street, Dublin 1",
-        "Lat": 55.348765,
-        "Long": -6.260987,
-        "Name": "Brew Haven",
-        "Short Address": "45 O'Connell St, D1"
       }
     }
   },
@@ -108,8 +101,8 @@
     "Locations": {
       "678-001": {
         "Address": "15 South Anne Street, Dublin 2",
-        "Lat": 53.341890,
-        "Long": -6.259570,
+        "Lat": 53.34189,
+        "Long": -6.25957,
         "Short Address": "South Anne St, D2"
       }
     }
@@ -152,7 +145,7 @@
     "Locations": {
       "151617-001": {
         "Address": "5 Grafton Street, Dublin 2",
-        "Lat": 53.342070,
+        "Lat": 53.34207,
         "Long": -6.259158,
         "Name": "Savor the Flavors",
         "Short Address": "5 Grafton St, D2"
@@ -167,7 +160,7 @@
     "Locations": {
       "181920-001": {
         "Address": "7 Dame Lane, Dublin 2",
-        "Lat": 53.343930,
+        "Lat": 53.34393,
         "Long": -6.263779,
         "Name": "Roast & Brew",
         "Short Address": "7 Dame Ln, D2"
@@ -212,7 +205,7 @@
     "Locations": {
       "272829-001": {
         "Address": "25 Shop Street, Galway",
-        "Lat": 53.272860,
+        "Lat": 53.27286,
         "Long": -9.052749,
         "Name": "Taste of Galway",
         "Short Address": "25 Shop St, Galway"
@@ -242,7 +235,7 @@
     "Locations": {
       "333435-001": {
         "Address": "18 Bridge Street, Limerick",
-        "Lat": 52.661390,
+        "Lat": 52.66139,
         "Long": -8.624794,
         "Name": "Gourmet Haven",
         "Short Address": "18 Bridge St, Limerick"
