@@ -1,0 +1,26 @@
+{
+  "name": "squidchallenge",
+  "version": "1.0.0",
+  "description": "API to display lists of businesses in closest proximity",
+  "main": "srv/server.ts",
+  "scripts": {
+    "test": "jest --coverage",
+    "compile": "tsc"
+  },
+  "author": "slawomirpiela",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.17",
+    "express": "^4.18.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "@types/jest": "^29.5.2",
+    "@types/supertest": "^2.0.12",
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.0"
+  }
+}
