@@ -12,20 +12,17 @@ jest.setTimeout(20000);
 describe("Server Routes", () => {
   let server: any;
 
-  beforeAll((done) => {
-    startServer(() => {
-      server = app;
-      done();
-    });
+  // Runs before all tests
+  beforeAll(() => {
+    startServer();
   });
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  afterAll((done) => {
-    stopServer(done);
-    //jest.restoreAllMocks();
+  afterAll(() => {
+    stopServer();
   });
 
   describe("Test route - GET /discovery?lat=X&long=Y", () => {

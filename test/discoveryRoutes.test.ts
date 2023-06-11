@@ -6,12 +6,7 @@ import {
 //import businessesData from '../srv/data/businesses.json'
 import { Request, Response } from "express";
 
-import {
-  createRequest,
-  createResponse,
-  MockRequest,
-  MockResponse,
-} from "node-mocks-http";
+import { createRequest, createResponse, MockRequest, MockResponse } from "node-mocks-http";
 
 //test the fxns logic to
 describe("Proximity Routes - Unit Tests", () => {
@@ -28,23 +23,36 @@ describe("Proximity Routes - Unit Tests", () => {
       const mockRequest = {
         body: {
           userLat: 15,
-          userLong: 15
+          userLong: 15,
         },
       } as Request;
 
       request = createRequest({
         method: "GET",
-        url: "/mockedRoute",
+        url: "/discovery?lat=53.341234&long=-6.258765",
       });
 
       const resp = sortBusinessesByProximity(request, response);
 
       expect(response._getStatusCode()).toEqual(200);
       expect(response._getData()).toBeDefined();
-      expect(JSON.parse(response._getData())).toHaveProperty('success');
+      expect(JSON.parse(response._getData())).toHaveProperty("success");
       expect(JSON.parse(response._getData()).success).toBe(true);
-      expect(JSON.parse(response._getData())).toHaveProperty('location');
-      expect(JSON.parse(response._getData())).toHaveProperty('businesses');
+      expect(JSON.parse(response._getData())).toHaveProperty("location");
+      expect(JSON.parse(response._getData())).toHaveProperty("businesses");
+    });
+
+    it("should return a 400 Bad Request error while trying to sort businesses by proximity", () => {
+      request = createRequest({
+        method: "GET",
+        url: "/mockedRoute",
+      });
+
+      sortBusinessesByProximity(request, response);
+
+      expect(response._getStatusCode()).toEqual(400);
+      expect(response._getData()).toBeDefined();
+      expect(response._getData()).toBe("Invalid query parameters");
     });
   });
 
