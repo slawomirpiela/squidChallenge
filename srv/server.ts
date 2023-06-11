@@ -18,7 +18,7 @@ export { app };
 //start and stopServer and set as functions to allow healthy start/stop during tests
 export const startServer = () => {
   server = app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
+    console.info(`Server started on port ${port}`);
   });
 };
 
