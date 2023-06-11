@@ -1,7 +1,5 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import {
-  sortAndLimitBusinessesByProximity,
-  sortAndLimitBusinessesByProximityFilteredByCategory,
   sortBusinessesByProximity,
 } from "./routes/discoveryRoutes";
 
@@ -10,23 +8,25 @@ const port = 3000;
 
 app.use(express.json());
 
-//GET /discovery?lat=X&long=Y
+//GET /discovery?lat=X&long=Y&limit=Z&type=Coffee //the last two are optional
 app.get("/discovery", sortBusinessesByProximity);
-
-//GET /discovery?lat=X&long=Y&limit=Z
-app.get("/discov/:placek", sortAndLimitBusinessesByProximity);
-
-//GET /discovery?lat=X&long=Y&limit=Z&type=Coffee
-app.get("/discove", sortAndLimitBusinessesByProximityFilteredByCategory);
 
 let server: any;
 
 export { app };
 
-export const startServer = (callback: () => void) => {
-  server = app.listen(port, callback);
+//start and stopServer and set as functions to allow healthy start/stop during tests
+export const startServer = () => {
+  server = app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
+  });
 };
 
-export const stopServer = (callback: () => void) => {
-  server.close(callback);
+export const stopServer = () => {
+  server.close(() => {});
 };
+
+// Start the server automatically when this file is run directly
+if (require.main === module) {
+  startServer();
+}
