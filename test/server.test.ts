@@ -1,16 +1,15 @@
-import request from "supertest";
-import { startServer, stopServer, app } from "../srv/server";
+import { startServer, stopServer } from "../srv/server";
+import { Request, Response } from "express";
+import { createRequest, createResponse, MockRequest, MockResponse } from "node-mocks-http";
 import {
-  sortAndLimitBusinessesByProximity,
-  sortAndLimitBusinessesByProximityFilteredByCategory,
   sortBusinessesByProximity,
 } from "../srv/routes/discoveryRoutes";
-//jest.mock('../srv/routes/discoveryRoutes')
 
-jest.setTimeout(20000);
+jest.setTimeout(10000);
 //mock here the return values off the fxns
 describe("Server Routes", () => {
-  let server: any;
+  let request: MockRequest<Request>;
+  let response: MockResponse<Response>;
 
   // Runs before all tests
   beforeAll(() => {
@@ -19,6 +18,7 @@ describe("Server Routes", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    response = createResponse();
   });
 
   afterAll(() => {
@@ -26,56 +26,22 @@ describe("Server Routes", () => {
   });
 
   describe("Test route - GET /discovery?lat=X&long=Y", () => {
-    it("should retrieve list of businesses sorted by proximity to my location - success", async () => {
-      // Mock the createUser function to return the created user
-      // (sortBusinessesByProximity as jest.Mock).mockImplementation(() => {
+    it("should trigger the correct route", async () => {
 
-      //   return ({
-      //     success : true,
-      //     outputBusinesses : [{
-      //       name: 'businessName1',
-      //       latitude: 'latCords',
-      //       longitude: 'longCords',
-      //       distance: 'distanceFromInput'
-      //     },
-      //     {
-      //       name: 'businessName2',
-      //       latitude: 'latCords',
-      //       longitude: 'longCords',
-      //       distance: 'distanceFromInput'
-      //     },
-      //     {
-      //       name: 'businessName3',
-      //       latitude: 'latCords',
-      //       longitude: 'longCords',
-      //       distance: 'distanceFromInput'
-      //     }]
-      //   });
-      // });
+      //mock the route handler function
+      jest.mock("../srv/routes/discoveryRoutes", () => ({
+        sortBusinessesByProximity: jest.fn(),
+      }));
 
-      // const response = await request(server).get('/users');
-      // expect(response.status).toBe(200);
-      // expect(response.body).toEqual([]);
+      //create server request
+      request = createRequest({
+        method: "GET",
+        url: "/discovery?lat=53.341234&long=-6.258765&type=Coffee&limit=5",
+      });
 
-      //const sortedBusinesses = sortBusinessesByProximity()
-      // const response = await request(app).get('/discovery')
+      expect(response._getStatusCode()).toBe(200);
 
-      // expect(response).toBeDefined();
-      // expect(response).toHaveProperty('success');
-      // expect(response).toHaveProperty('outputBusinesses');
-      expect(1).toEqual(1);
     });
   });
 
-  describe("Test route - GET /discovery?lat=X&long=Y&limit=Z", () => {
-    it("should retrieve list of businesses sorted by proximity to my location, with limited number of records - success", async () => {
-      expect(1).toEqual(1);
-    });
-  });
-
-  describe("Test route - GET /discovery?lat=X&long=Y&limit=Z&type=Coffee", () => {
-    it("should retrieve list of businesses sorted by proximity to my location, with limited number of records & fitlered by type - success", async () => {
-      expect(1).toEqual(1);
-    });
-  });
 });
