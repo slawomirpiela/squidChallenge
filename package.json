@@ -5,7 +5,9 @@
   "main": "srv/server.ts",
   "scripts": {
     "test": "jest --coverage",
-    "compile": "tsc"
+    "compile": "tsc",
+    "start": "npx ts-node srv/server.ts",
+    "prettify": "npx prettier --write ."
   },
   "author": "slawomirpiela",
   "license": "ISC",
