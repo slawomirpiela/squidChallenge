@@ -26,6 +26,7 @@ export interface BusinessData {
 
 export interface SortedBusiness {
   name: string;
-  locationId: string;
+  latitude: number;
+  longitude: number;
   distance: number;
 }
